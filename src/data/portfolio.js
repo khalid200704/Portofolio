@@ -158,7 +158,7 @@ export const projects = [
     tech: ["ESP32", "IoT", "Embedded C", "Automation"],
     github: "https://github.com/khalid200704/Automatic-Feeder-System-for-Betta-Fish",
     demo: "",
-    image: "",
+    image: "/images/projects/Assembled.webp",
     year: 2024,
     featured: false,
     details: {

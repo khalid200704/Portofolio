@@ -47,7 +47,8 @@ export default function Projects() {
             const d = domainMap[p.domain]
             return (
               <StaggerItem key={p.id}>
-                <Link to={`/projects/${p.id}`} className="project-card" style={{ borderTopColor: d?.color }}>
+                <div className="project-card" style={{ borderTopColor: d?.color }}>
+                  <Link to={`/projects/${p.id}`} className="card-stretched-link" aria-label={p.title} />
                   <div className="project-image">
                     {p.image
                       ? <img src={p.image} alt={p.title} />
@@ -70,19 +71,19 @@ export default function Projects() {
                     {(p.github || p.demo) && (
                       <div className="card-links">
                         {p.github && (
-                          <a href={p.github} target="_blank" rel="noopener noreferrer" className="card-link" onClick={e => e.stopPropagation()}>
+                          <a href={p.github} target="_blank" rel="noopener noreferrer" className="card-link">
                             <Icon name="Github" size={13} /> GitHub
                           </a>
                         )}
                         {p.demo && (
-                          <a href={p.demo} target="_blank" rel="noopener noreferrer" className="card-link" onClick={e => e.stopPropagation()}>
+                          <a href={p.demo} target="_blank" rel="noopener noreferrer" className="card-link">
                             <Icon name="ExternalLink" size={13} /> Demo
                           </a>
                         )}
                       </div>
                     )}
                   </div>
-                </Link>
+                </div>
               </StaggerItem>
             )
           })}
