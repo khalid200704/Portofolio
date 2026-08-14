@@ -511,7 +511,7 @@ export const hardwareDesigns = [
     description: "ESP32 + SEM228 (pyranometer) + ADS1115 + DHT22 + SD card — skematik dan PCB untuk akuisisi data pada proyek MATAHARI.",
     tech: ["ESP32", "SEM228", "ADS1115", "DHT22", "SD Card"],
     projectId: "prediksi-radiasi-lstm",
-    image: "",
+    image: "/images/schematics/solar-radiation.png",
   },
   {
     id: "hw-fish-feeder",
@@ -519,7 +519,7 @@ export const hardwareDesigns = [
     description: "ESP32 + PH4502C (sensor pH) + DS18B20 + servo SG90 — skematik dan PCB untuk sistem pemberi pakan otomatis ikan cupang.",
     tech: ["ESP32", "PH4502C", "DS18B20", "SG90"],
     projectId: "automatic-feeder-betta",
-    image: "",
+    image: "/images/schematics/fish-feeder.png",
   },
   {
     id: "hw-battery-indicator",
@@ -527,7 +527,7 @@ export const hardwareDesigns = [
     description: "BC547 LED bar + ESP8266 — indikator level tegangan baterai berbasis LED bar dengan transistor BC547.",
     tech: ["BC547", "ESP8266", "LED Bar"],
     projectId: null,
-    image: "",
+    image: "/images/schematics/battery-indicator.png",
   },
 ]
 
