@@ -5,10 +5,11 @@ import { about } from '../data/portfolio'
 import Icon from './Icon'
 
 const NAV_LINKS = [
-  { label: 'Projects',   hash: '#projects'   },
-  { label: 'Skills',     hash: '#skills'     },
-  { label: 'Experience', hash: '#experience' },
-  { label: 'Contact',    hash: '#contact'    },
+  { label: 'Projects',    hash: '#projects'    },
+  { label: 'Skills',      hash: '#skills'      },
+  { label: 'Experience',  hash: '#experience'  },
+  { label: 'Recognition', hash: '#recognition' },
+  { label: 'Contact',     hash: '#contact'     },
 ]
 
 export default function Navbar() {

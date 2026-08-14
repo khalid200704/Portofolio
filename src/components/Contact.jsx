@@ -45,6 +45,16 @@ export default function Contact() {
                 <Icon name="Github" size={15} /> GitHub
               </a>
             )}
+            {about.huggingface && (
+              <a href={about.huggingface} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                <Icon name="Bot" size={15} /> HuggingFace
+              </a>
+            )}
+            {about.medium && (
+              <a href={about.medium} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                <Icon name="BookOpen" size={15} /> Medium
+              </a>
+            )}
           </motion.div>
         </div>
       </div>

@@ -167,31 +167,31 @@ function PrediksiLSTM() {
 /* ─── Deschain ────────────────────────────────────────────── */
 function Deschain() {
   const c = '#f97316'
-  const files = [{x:50,lang:'TS',ext:'.ts'},{x:170,lang:'JS',ext:'.js'},{x:290,lang:'PY',ext:'.py'}]
   return (
     <Wrap id="des" bg={c}>
-      {/* branch lines from top */}
-      <circle cx="200" cy="24" r="6" fill={c} opacity="0.6"/>
-      {files.map(f=>(
-        <g key={f.lang}>
-          <line x1="200" y1="30" x2={f.x+35} y2="55" stroke={c} strokeWidth="1.5" opacity="0.35"/>
-          {/* file card */}
-          <rect x={f.x} y="55" width="70" height="90" rx="8" fill="white" stroke={c} strokeWidth="1.5" opacity="0.9"/>
-          <rect x={f.x} y="55" width="70" height="24" rx="8" fill={c} opacity="0.15"/>
-          <rect x={f.x+45} y="55" width="26" height="26" rx="4" fill={c} opacity="0.2"/>
-          <text x={f.x+58} y="72" textAnchor="middle" fill={c} fontSize="8" fontWeight="700">{f.ext}</text>
-          <text x={f.x+35} y="77" textAnchor="middle" fill={c} fontSize="11" fontWeight="700">{f.lang}</text>
-          {/* code lines */}
-          {[0,1,2,3].map(i=>(
-            <rect key={i} x={f.x+10} y={90+i*14} width={30+Math.sin(i+f.x)*10} height="5" rx="2"
-                  fill={c} opacity="0.12"/>
-          ))}
+      {/* UMKM nodes */}
+      {[36, 90, 144].map(cy => (
+        <g key={cy}>
+          <line x1="73" y1={cy} x2="150" y2="90" stroke={c} strokeWidth="1.3" opacity="0.35" strokeDasharray="3 3"/>
+          <circle cx="55" cy={cy} r="18" fill="white" stroke={c} strokeWidth="1.5" opacity="0.9"/>
+          <text x="55" y={cy + 4} textAnchor="middle" fill={c} fontSize="8" fontWeight="700">UMKM</text>
         </g>
       ))}
-      {/* fork badge on PY */}
-      <circle cx="336" cy="60" r="12" fill={c} opacity="0.9"/>
-      <text x="336" y="64" textAnchor="middle" fill="white" fontSize="10">★</text>
-      <text x="336" y="158" textAnchor="middle" fill={c} fontSize="8" opacity="0.6">forked</text>
+      {/* AI matching hub */}
+      <circle cx="180" cy="90" r="34" fill={c} opacity="0.95"/>
+      <text x="180" y="86" textAnchor="middle" fill="white" fontSize="9" fontWeight="700">AI</text>
+      <text x="180" y="98" textAnchor="middle" fill="white" fontSize="7" opacity="0.85">Group Match</text>
+      {/* arrow to credit trail */}
+      <line x1="214" y1="90" x2="280" y2="90" stroke={c} strokeWidth="1.5" opacity="0.5"/>
+      <polygon points="280,90 272,85 272,95" fill={c} opacity="0.6"/>
+      {/* Credit trail document */}
+      <rect x="288" y="50" width="82" height="80" rx="8" fill="white" stroke={c} strokeWidth="1.5" opacity="0.9"/>
+      <rect x="300" y="64" width="58" height="6" rx="3" fill={c} opacity="0.3"/>
+      <rect x="300" y="78" width="58" height="6" rx="3" fill={c} opacity="0.2"/>
+      <rect x="300" y="92" width="40" height="6" rx="3" fill={c} opacity="0.2"/>
+      <circle cx="329" cy="112" r="10" fill={c} opacity="0.9"/>
+      <text x="329" y="116" textAnchor="middle" fill="white" fontSize="9">✓</text>
+      <text x="329" y="145" textAnchor="middle" fill={c} fontSize="7" opacity="0.7">Credit Trail</text>
     </Wrap>
   )
 }

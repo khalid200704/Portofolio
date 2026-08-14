@@ -4,11 +4,10 @@ import { about, domains } from '../data/portfolio'
 import Icon from './Icon'
 
 const ROLES = [
-  "Embedded System & IoT Engineer",
-  "Machine Learning Engineer",
-  "Full Stack Developer",
-  "Hardware & Software Engineer",
-]
+  about.title,
+  about.titleSecondary,
+  "Full-Stack Developer",
+].filter(Boolean)
 
 const BUBBLE_POSITIONS = [
   { top: '2%',   left: '8%',   floatY: 7,  duration: 4.2, delay: 0    },
@@ -127,11 +126,38 @@ export default function Hero() {
               {about.tagline}
             </motion.p>
 
+            {about.bio && (
+              <motion.p
+                className="hero-bio-long"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.58 }}
+              >
+                {about.bio}
+              </motion.p>
+            )}
+
+            {about.education && (
+              <motion.div
+                className="hero-education"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.62 }}
+              >
+                <Icon name="GraduationCap" size={14} />
+                <span>
+                  {about.education.degree} · {about.education.university}
+                  {about.education.concentration && ` (${about.education.concentration})`}
+                  {about.education.status && ` — ${about.education.status}`}
+                </span>
+              </motion.div>
+            )}
+
             <motion.div
               className="hero-actions"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.64 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
             >
               <a href="#projects" className="btn btn-primary">View Projects</a>
               {about.linkedin && (
@@ -144,6 +170,16 @@ export default function Hero() {
                   GitHub <Icon name="ArrowUpRight" size={14} />
                 </a>
               )}
+              {about.huggingface && (
+                <a href={about.huggingface} target="_blank" rel="noopener noreferrer" className="hero-secondary">
+                  HuggingFace <Icon name="ArrowUpRight" size={14} />
+                </a>
+              )}
+              {about.medium && (
+                <a href={about.medium} target="_blank" rel="noopener noreferrer" className="hero-secondary">
+                  Medium <Icon name="ArrowUpRight" size={14} />
+                </a>
+              )}
             </motion.div>
 
             {/* Domain chips */}
@@ -151,7 +187,7 @@ export default function Hero() {
               className="hero-domains"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.82 }}
+              transition={{ duration: 0.6, delay: 0.86 }}
             >
               {domains.map((d, i) => (
                 <motion.span
@@ -160,7 +196,7 @@ export default function Hero() {
                   style={{ borderColor: d.color, color: d.color }}
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: 0.82 + i * 0.07 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1], delay: 0.86 + i * 0.07 }}
                 >
                   <Icon name={d.icon} size={13} />
                   {d.label}

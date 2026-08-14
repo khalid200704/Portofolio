@@ -101,7 +101,7 @@ function TiToolkitDiagram() {
       {/* labels top */}
       {['Input','Frontend','Logic','SEO','Output'].map((l,i)=>(
         <text key={l} x={75+i*158} y={72} textAnchor="middle" fill={c} fontSize="8"
-              fontFamily="monospace" opacity="0.5" textTransform="uppercase">{l}</text>
+              fontFamily="monospace" opacity="0.5" style={{ textTransform: 'uppercase' }}>{l}</text>
       ))}
     </Wrap>
   )
@@ -178,26 +178,19 @@ function LSTMDiagram() {
 /* ─── Deschain ────────────────────────────────────────────── */
 function DeschainDiagram() {
   const c = '#f97316'
+  const y = 84
   return (
     <Wrap>
       <Bg color={c}/>
-      <Box x={20} y={84} label="Source Concept" sub="Core Algorithm" color={c} w={130}/>
-      <Arrow x1={153} y1={110} x2={188} y2={110} color={c} label="implement"/>
-      {/* fork */}
-      <rect x={188} y={95} width="8" height="30" rx="4" fill={c} opacity="0.4"/>
-      {[{y:34,l:'TypeScript v2',s:'Strongly typed'},{y:84,l:'JavaScript',s:'Flexible JS'},{y:134,l:'Python (Notebook)',s:'Forked ★'}].map(b=>(
-        <g key={b.l}>
-          <line x1={196} y1={110} x2={220} y2={b.y+26} stroke={c} strokeWidth="1.5" opacity="0.4"/>
-          <Box x={222} y={b.y} label={b.l} sub={b.s} color={c} w={140}
-               dark={b.l.includes('Python')}/>
-        </g>
-      ))}
-      <Arrow x1={365} y1={44} x2={400} y2={44} color={c}/>
-      <Arrow x1={365} y1={110} x2={400} y2={110} color={c}/>
-      <Arrow x1={365} y1={160} x2={400} y2={160} color={c}/>
-      <Box x={402} y={20} label="GitHub" sub="khalid200704" color={c} w={110}/>
-      <Box x={402} y={84} label="GitHub" sub="khalid200704" color={c} w={110}/>
-      <Box x={402} y={144} label="GitHub" sub="fork by others" color={c} w={110} dark/>
+      <Box x={20}  y={y} label="UMKM" sub="Kebutuhan Pengadaan" color={c} w={110}/>
+      <Arrow x1={133} y1={y+26} x2={168} y2={y+26} color={c} label="match"/>
+      <Box x={170} y={y} label="AI Group Matching" sub="Jaccard Similarity" color={c} w={135}/>
+      <Arrow x1={308} y1={y+26} x2={343} y2={y+26} color={c} label="consult"/>
+      <Box x={345} y={y} label="RAG Consultation" sub="4-layer fallback" color={c} dark w={130}/>
+      <Arrow x1={478} y1={y+26} x2={513} y2={y+26} color={c} label="advise"/>
+      <Box x={515} y={y} label="Fine-tuned LLM" sub="Mistral-7B QLoRA" color={c} w={110}/>
+      <Arrow x1={628} y1={y+26} x2={663} y2={y+26} color={c} label="export"/>
+      <Box x={665} y={y} label="Credit Trail" sub="POJK 29/2024" color={c} dark w={90}/>
     </Wrap>
   )
 }

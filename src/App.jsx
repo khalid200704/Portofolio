@@ -3,8 +3,10 @@ import { AnimatePresence, motion } from 'motion/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Projects from './components/Projects'
+import HardwareGallery from './components/HardwareGallery'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
+import Recognition from './components/Recognition'
 import Articles from './components/Articles'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
@@ -31,8 +33,10 @@ function Home() {
       <main>
         <Hero />
         <Projects />
+        <HardwareGallery />
         <Skills />
         <Experience />
+        <Recognition />
         <Articles />
         <Contact />
       </main>

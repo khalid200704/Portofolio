@@ -114,7 +114,16 @@ export default function ProjectDetail() {
                   Live Demo
                 </a>
               )}
+              {project.extraLinks?.map(link => (
+                <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                  <Icon name="Bot" size={15} />
+                  {link.label}
+                </a>
+              ))}
             </div>
+            {d?.demoNote && (
+              <p className="detail-demo-note">{d.demoNote}</p>
+            )}
           </motion.div>
         </div>
       </header>
