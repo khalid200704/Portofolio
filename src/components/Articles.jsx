@@ -1,4 +1,4 @@
-import { articles } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from './Icon'
 
 const platformIcon = {
@@ -13,15 +13,16 @@ function formatDate(dateStr) {
 }
 
 export default function Articles() {
+  const { articles, ui } = useLanguage()
   if (articles.length === 0) return null
 
   return (
     <section id="articles" className="section articles-section">
       <div className="container">
         <div style={{ marginBottom: '2.5rem' }}>
-          <span className="section-label">Writing</span>
-          <h2 className="section-title">Articles</h2>
-          <p className="section-sub">Things I've written about engineering, tech, and projects.</p>
+          <span className="section-label">{ui.articles.eyebrow}</span>
+          <h2 className="section-title">{ui.articles.title}</h2>
+          <p className="section-sub">{ui.articles.subtitle}</p>
         </div>
 
         <div className="articles-grid">
@@ -54,7 +55,7 @@ export default function Articles() {
                   </div>
                 )}
                 <span className="article-read">
-                  Read article <Icon name="ArrowUpRight" size={13} />
+                  {ui.articles.readArticle} <Icon name="ArrowUpRight" size={13} />
                 </span>
               </div>
             </a>

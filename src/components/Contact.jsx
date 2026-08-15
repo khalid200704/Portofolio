@@ -1,8 +1,9 @@
 import { motion } from 'motion/react'
-import { about } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from './Icon'
 
 export default function Contact() {
+  const { about, ui } = useLanguage()
   return (
     <section id="contact" className="contact-band">
       <div className="container">
@@ -13,7 +14,7 @@ export default function Contact() {
             viewport={{ once: true, margin: '-60px 0px' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            Let's build something together.
+            {ui.contact.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -21,7 +22,7 @@ export default function Contact() {
             viewport={{ once: true, margin: '-60px 0px' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-            Open to collaborations, internships, and interesting engineering projects.
+            {ui.contact.subtitle}
           </motion.p>
           <motion.div
             className="contact-links"
@@ -32,27 +33,32 @@ export default function Contact() {
           >
             {about.email && (
               <a href={`mailto:${about.email}`} className="btn btn-primary" style={{ background: '#fff', color: '#17171c' }}>
-                <Icon name="Mail" size={15} /> Email Me
+                <Icon name="Mail" size={15} /> {ui.contact.emailMe}
+              </a>
+            )}
+            {about.resumeUrl && (
+              <a href={about.resumeUrl} download className="btn btn-outline-light">
+                <Icon name="FileText" size={15} /> Download CV
               </a>
             )}
             {about.linkedin && (
               <a href={about.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                <Icon name="Linkedin" size={15} /> LinkedIn
+                <Icon name="Linkedin" size={15} /> {ui.contact.linkedin}
               </a>
             )}
             {about.github && (
               <a href={about.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                <Icon name="Github" size={15} /> GitHub
+                <Icon name="Github" size={15} /> {ui.contact.github}
               </a>
             )}
             {about.huggingface && (
               <a href={about.huggingface} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                <Icon name="Bot" size={15} /> HuggingFace
+                <Icon name="Bot" size={15} /> {ui.contact.huggingface}
               </a>
             )}
             {about.medium && (
               <a href={about.medium} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-                <Icon name="BookOpen" size={15} /> Medium
+                <Icon name="BookOpen" size={15} /> {ui.contact.medium}
               </a>
             )}
           </motion.div>

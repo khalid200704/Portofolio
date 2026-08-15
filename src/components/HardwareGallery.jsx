@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { hardwareDesigns } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from './Icon'
 import { FadeUp, StaggerChildren, StaggerItem } from './Animate'
 
 export default function HardwareGallery() {
+  const { hardwareDesigns, ui } = useLanguage()
   if (hardwareDesigns.length === 0) return null
 
   return (
@@ -11,9 +12,9 @@ export default function HardwareGallery() {
       <div className="container">
         <FadeUp>
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="section-label">Schematics</span>
-            <h2 className="section-title">Hardware & PCB Design</h2>
-            <p className="section-sub">Skematik dan desain PCB yang saya buat di EasyEDA.</p>
+            <span className="section-label">{ui.hardware.eyebrow}</span>
+            <h2 className="section-title">{ui.hardware.title}</h2>
+            <p className="section-sub">{ui.hardware.subtitle}</p>
           </div>
         </FadeUp>
 
@@ -34,7 +35,7 @@ export default function HardwareGallery() {
                 </div>
                 {hw.projectId && (
                   <Link to={`/projects/${hw.projectId}`} className="card-read-more" style={{ marginTop: '0.75rem' }}>
-                    Lihat proyek <Icon name="ArrowRight" size={13} />
+                    {ui.hardware.viewProject} <Icon name="ArrowRight" size={13} />
                   </Link>
                 )}
               </div>

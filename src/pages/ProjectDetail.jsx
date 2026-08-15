@@ -1,23 +1,24 @@
 import { useEffect } from 'react'
-import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'motion/react'
-import { projects, domains } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from '../components/Icon'
 import Navbar from '../components/Navbar'
 import { FadeUp, StaggerChildren, StaggerItem } from '../components/Animate'
 import ProjectDiagram from '../components/ProjectDiagram'
 
 export default function ProjectDetail() {
+  const { about, projects, domains, ui } = useLanguage()
   const { id } = useParams()
   const project = projects.find(p => p.id === id)
 
   useEffect(() => {
     if (project) {
-      document.title = `${project.title} — Abdullah Khalid Fadillah`
+      document.title = `${project.title} — ${about.name}`
       const meta = document.querySelector('meta[name="description"]')
       if (meta) meta.setAttribute('content', project.description)
     }
-  }, [project])
+  }, [project, about.name])
 
   if (!project) return <Navigate to="/" replace />
 
@@ -40,7 +41,7 @@ export default function ProjectDetail() {
         <div className="container">
           <Link to="/" className="detail-back-link">
             <Icon name="ArrowLeft" size={14} />
-            All Projects
+            {ui.detail.allProjects}
           </Link>
         </div>
       </div>
@@ -105,13 +106,13 @@ export default function ProjectDetail() {
               {project.github && (
                 <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
                   <Icon name="Github" size={15} />
-                  View on GitHub
+                  {ui.detail.viewOnGithub}
                 </a>
               )}
               {project.demo && (
                 <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
                   <Icon name="ExternalLink" size={15} />
-                  Live Demo
+                  {ui.detail.liveDemo}
                 </a>
               )}
               {project.extraLinks?.map(link => (
@@ -137,7 +138,7 @@ export default function ProjectDetail() {
               {d.overview && (
                 <FadeUp>
                   <section className="detail-section">
-                    <h2 className="detail-section-title">Overview</h2>
+                    <h2 className="detail-section-title">{ui.detail.overview}</h2>
                     <p>{d.overview}</p>
                   </section>
                 </FadeUp>
@@ -146,7 +147,7 @@ export default function ProjectDetail() {
               {d.problem && (
                 <FadeUp delay={0.05}>
                   <section className="detail-section">
-                    <h2 className="detail-section-title">Problem</h2>
+                    <h2 className="detail-section-title">{ui.detail.problem}</h2>
                     <p>{d.problem}</p>
                   </section>
                 </FadeUp>
@@ -155,7 +156,7 @@ export default function ProjectDetail() {
               {d.approach && (
                 <FadeUp delay={0.05}>
                   <section className="detail-section">
-                    <h2 className="detail-section-title">Approach</h2>
+                    <h2 className="detail-section-title">{ui.detail.approach}</h2>
                     <p>{d.approach}</p>
                   </section>
                 </FadeUp>
@@ -163,7 +164,7 @@ export default function ProjectDetail() {
 
               <FadeUp delay={0.05}>
                 <section className="detail-section">
-                  <h2 className="detail-section-title">System Architecture</h2>
+                  <h2 className="detail-section-title">{ui.detail.systemArchitecture}</h2>
                   <div className="detail-diagram">
                     <ProjectDiagram projectId={project.id} color={domain?.color} />
                   </div>
@@ -173,7 +174,7 @@ export default function ProjectDetail() {
               {d.steps?.length > 0 && (
                 <FadeUp delay={0.05}>
                   <section className="detail-section">
-                    <h2 className="detail-section-title">Implementation</h2>
+                    <h2 className="detail-section-title">{ui.detail.implementation}</h2>
                     <StaggerChildren tag="ol" className="detail-steps" staggerDelay={0.08}>
                       {d.steps.map((step, i) => (
                         <StaggerItem key={i}>
@@ -194,7 +195,7 @@ export default function ProjectDetail() {
               {d.results && (
                 <FadeUp delay={0.05}>
                   <section className="detail-section">
-                    <h2 className="detail-section-title">Results</h2>
+                    <h2 className="detail-section-title">{ui.detail.results}</h2>
                     <div className="detail-results">
                       <Icon name="TrendingUp" size={18} />
                       <p>{d.results}</p>
@@ -207,24 +208,24 @@ export default function ProjectDetail() {
             {/* Sidebar */}
             <aside className="detail-sidebar">
               <div className="detail-sidebar-card">
-                <div className="sidebar-label">Domain</div>
+                <div className="sidebar-label">{ui.detail.domain}</div>
                 <div className="sidebar-value domain-chip" style={{ color: domain?.color }}>
                   <Icon name={domain?.icon} size={13} />
                   {domain?.label}
                 </div>
               </div>
               <div className="detail-sidebar-card">
-                <div className="sidebar-label">Year</div>
+                <div className="sidebar-label">{ui.detail.year}</div>
                 <div className="sidebar-value">{project.year}</div>
               </div>
               {d.duration && (
                 <div className="detail-sidebar-card">
-                  <div className="sidebar-label">Duration</div>
+                  <div className="sidebar-label">{ui.detail.duration}</div>
                   <div className="sidebar-value">{d.duration}</div>
                 </div>
               )}
               <div className="detail-sidebar-card">
-                <div className="sidebar-label">Tech Stack</div>
+                <div className="sidebar-label">{ui.detail.techStack}</div>
                 <div className="sidebar-tech">
                   {(project.tech || []).map(t => (
                     <span key={t} className="tech-tag">{t}</span>
@@ -238,7 +239,7 @@ export default function ProjectDetail() {
           {d.gallery?.length > 0 && (
             <div className="container">
               <section className="detail-section">
-                <h2 className="detail-section-title">Gallery</h2>
+                <h2 className="detail-section-title">{ui.detail.gallery}</h2>
                 <div className="detail-gallery">
                   {d.gallery.map((img, i) => (
                     <img key={i} src={img} alt={`${project.title} screenshot ${i + 1}`} className="gallery-img" />
@@ -255,7 +256,7 @@ export default function ProjectDetail() {
         <div className="container">
           <Link to="/#projects" className="btn btn-outline">
             <Icon name="ArrowLeft" size={14} />
-            Back to All Projects
+            {ui.detail.backToAllProjects}
           </Link>
         </div>
       </div>

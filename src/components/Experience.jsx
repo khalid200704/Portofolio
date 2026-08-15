@@ -1,22 +1,22 @@
-import { experience, domains } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import { FadeUp, StaggerChildren, StaggerItem } from './Animate'
 
 export default function Experience() {
-  const domainMap = Object.fromEntries(domains.map(d => [d.id, d]))
+  const { experience, ui } = useLanguage()
 
   return (
     <section id="experience" className="section">
       <div className="container">
         <FadeUp>
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="section-label">History</span>
-            <h2 className="section-title">Experience</h2>
-            <p className="section-sub">Projects, internships, and roles I've taken on.</p>
+            <span className="section-label">{ui.experience.eyebrow}</span>
+            <h2 className="section-title">{ui.experience.title}</h2>
+            <p className="section-sub">{ui.experience.subtitle}</p>
           </div>
         </FadeUp>
 
         {experience.length === 0 ? (
-          <p style={{ color: 'var(--muted)' }}>Pengalaman akan muncul setelah data diisi.</p>
+          <p style={{ color: 'var(--muted)' }}>{ui.experience.empty}</p>
         ) : (
           <StaggerChildren className="exp-list" staggerDelay={0.1}>
             {experience.map((e, i) => {

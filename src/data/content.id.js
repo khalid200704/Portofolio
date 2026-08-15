@@ -4,6 +4,7 @@ export const about = {
   titleSecondary: "AI/ML & IoT Developer",
   tagline: "Membangun sistem end-to-end — dari sensor, ke model prediksi, hingga dashboard.",
   bio: "Mahasiswa Rekayasa Sistem Komputer (S.Kom) Universitas Tanjungpura, konsentrasi Network Intelligence Communication (NIC). Fokus di persimpangan antara AI/Machine Learning, sistem IoT/embedded, dan full-stack development.",
+  availability: "Terbuka untuk peran remote AI & full-stack",
   education: {
     university: "Universitas Tanjungpura",
     degree: "S.Kom — Rekayasa Sistem Komputer",
@@ -103,7 +104,7 @@ export const projects = [
     demo: "",
     image: "",
     year: 2026,
-    featured: true,
+    featured: false,
     details: {
       overview: "JagaTruk adalah sistem IoT predictive maintenance untuk armada truk, dikembangkan bersama tim (Raedi Sahlihin, Duta Satria Nugroho, Bagdja Azarya Patrianusa) untuk UNTAN Start-Up Competition 2026 kategori Spark.",
       problem: "Kerusakan truk yang tidak terdeteksi dini menyebabkan downtime armada dan biaya perbaikan yang membengkak.",
@@ -149,7 +150,7 @@ export const projects = [
     demo: "https://khalid200704.github.io",
     image: "",
     year: 2024,
-    featured: true,
+    featured: false,
     details: {
       overview: "TI Toolkit adalah website kalkulator gratis untuk mahasiswa dan praktisi Teknik Industri. Berisi 13 kalkulator (antrian, sampling, statistik, dll) dan 11 panduan praktis.",
       problem: "Mahasiswa Teknik Industri sering kesulitan mencari tools kalkulator yang spesifik untuk mata kuliah mereka secara gratis dan mudah diakses.",
@@ -174,7 +175,7 @@ export const projects = [
     demo: "",
     image: "",
     year: 2024,
-    featured: true,
+    featured: false,
     details: {
       overview: "Sistem ventilasi cerdas untuk industri mebel yang secara otomatis mengendalikan blower berdasarkan kualitas udara ruang produksi. Memantau CO₂, suhu, kelembaban, dan partikel debu (PM2.5) secara real-time.",
       problem: "Industri mebel menghasilkan debu kayu dan gas berbahaya yang berpotensi membahayakan pekerja. Ventilasi manual tidak cukup responsif terhadap perubahan kondisi udara yang tiba-tiba.",
@@ -200,7 +201,7 @@ export const projects = [
     demo: "",
     image: "",
     year: 2024,
-    featured: true,
+    featured: false,
     details: {
       overview: "Sistem telemetri berbasis ESP32 untuk kendaraan listrik yang mengirim data kecepatan, suhu baterai, voltase, dan estimasi jarak tempuh ke server cloud secara real-time.",
       problem: "Kendaraan listrik memerlukan monitoring kondisi baterai dan sistem secara kontinu untuk mencegah kerusakan akibat overheating atau over-discharge yang tidak terdeteksi.",
@@ -225,7 +226,7 @@ export const projects = [
     github: "",
     demo: "",
     image: "",
-    featured: false,
+    featured: true,
     details: {
       overview: "Analisis sentimen dari ulasan aplikasi yang di-scrape dari Google Play Store.",
       problem: "Label sentimen dari star rating saja seringkali noisy — rating tinggi dengan ulasan negatif atau sebaliknya — sehingga model yang dilatih langsung dari rating cenderung kurang akurat.",

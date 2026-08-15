@@ -1,13 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { about, domains } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from './Icon'
-
-const ROLES = [
-  about.title,
-  about.titleSecondary,
-  "Full-Stack Developer",
-].filter(Boolean)
 
 const BUBBLE_POSITIONS = [
   { top: '2%',   left: '8%',   floatY: 7,  duration: 4.2, delay: 0    },
@@ -18,7 +12,7 @@ const BUBBLE_POSITIONS = [
   { top: '80%',  left: '52%',  floatY: 7,  duration: 4.8, delay: 0.35 },
 ]
 
-function HeroVisual() {
+function HeroVisual({ domains }) {
   return (
     <div className="hero-visual" aria-hidden>
       {/* decorative bg rings */}
@@ -55,14 +49,18 @@ function HeroVisual() {
 }
 
 export default function Hero() {
+  const { about, domains, ui } = useLanguage()
   const [roleIdx, setRoleIdx] = useState(0)
   const hasPhoto = Boolean(about.avatar)
   const nameWords = (about.name || 'Your Name').split(' ')
 
+  const roles = [about.title, about.titleSecondary, ui.hero.fullStackDeveloper].filter(Boolean)
+
   useEffect(() => {
-    const t = setInterval(() => setRoleIdx(i => (i + 1) % ROLES.length), 2800)
+    setRoleIdx(0)
+    const t = setInterval(() => setRoleIdx(i => (i + 1) % roles.length), 2800)
     return () => clearInterval(t)
-  }, [])
+  }, [roles.length])
 
   return (
     <section id="hero" className="hero section">
@@ -72,6 +70,18 @@ export default function Hero() {
         <div className="hero-layout">
           {/* ── Left: text ── */}
           <div className="hero-inner">
+
+            {about.availability && (
+              <motion.div
+                className="hero-availability"
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="hero-availability-dot" />
+                {about.availability}
+              </motion.div>
+            )}
 
             {/* Cycling role */}
             <div className="hero-eyebrow-wrap">
@@ -86,7 +96,7 @@ export default function Hero() {
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.28, ease: 'easeInOut' }}
                 >
-                  {ROLES[roleIdx]}
+                  {roles[roleIdx]}
                 </motion.span>
               </AnimatePresence>
             </div>
@@ -159,7 +169,13 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
             >
-              <a href="#projects" className="btn btn-primary">View Projects</a>
+              <a href="#projects" className="btn btn-primary">{ui.hero.viewProjects}</a>
+              {about.resumeUrl && (
+                <a href={about.resumeUrl} download className="btn btn-outline">
+                  <Icon name="FileText" size={15} />
+                  Download CV
+                </a>
+              )}
               {about.linkedin && (
                 <a href={about.linkedin} target="_blank" rel="noopener noreferrer" className="hero-secondary">
                   LinkedIn <Icon name="ArrowUpRight" size={14} />
@@ -218,7 +234,7 @@ export default function Hero() {
               </div>
             </motion.div>
           ) : (
-            <HeroVisual />
+            <HeroVisual domains={domains} />
           )}
         </div>
       </div>

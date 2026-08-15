@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'motion/react'
-import { projects, domains } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from './Icon'
 import ProjectVisual from './ProjectVisual'
 import { FadeUp, StaggerChildren, StaggerItem } from './Animate'
 
 export default function Projects() {
+  const { projects, domains, ui } = useLanguage()
   const [active, setActive] = useState('all')
-  const filtered = active === 'all' ? projects : projects.filter(p => p.domain === active)
+  const filtered = (active === 'all' ? projects : projects.filter(p => p.domain === active))
+    .slice()
+    .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0))
   const domainMap = Object.fromEntries(domains.map(d => [d.id, d]))
 
   return (
@@ -16,16 +18,16 @@ export default function Projects() {
       <div className="container">
         <FadeUp>
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="section-label">Work</span>
-            <h2 className="section-title">Projects</h2>
-            <p className="section-sub">Things I've built across different engineering domains.</p>
+            <span className="section-label">{ui.projects.eyebrow}</span>
+            <h2 className="section-title">{ui.projects.title}</h2>
+            <p className="section-sub">{ui.projects.subtitle}</p>
           </div>
         </FadeUp>
 
         <FadeUp delay={0.1}>
           <div className="filter-row">
             <button className={`filter-btn ${active === 'all' ? 'active' : ''}`} onClick={() => setActive('all')}>
-              All
+              {ui.projects.all}
             </button>
             {domains.map(d => (
               <button
@@ -42,13 +44,14 @@ export default function Projects() {
 
         <StaggerChildren className="projects-grid" staggerDelay={0.07}>
           {filtered.length === 0 ? (
-            <div className="empty-state"><p>No projects in this domain yet.</p></div>
+            <div className="empty-state"><p>{ui.projects.empty}</p></div>
           ) : filtered.map(p => {
             const d = domainMap[p.domain]
             return (
               <StaggerItem key={p.id}>
                 <div className="project-card" style={{ borderTopColor: d?.color }}>
                   <Link to={`/projects/${p.id}`} className="card-stretched-link" aria-label={p.title} />
+                  {p.featured && <span className="card-featured-badge">★</span>}
                   <div className="project-image">
                     {p.image
                       ? <img src={p.image} alt={p.title} />
@@ -66,18 +69,18 @@ export default function Projects() {
                   </div>
                   <div className="card-footer">
                     <span className="card-read-more">
-                      Read more <Icon name="ArrowRight" size={13} />
+                      {ui.projects.readMore} <Icon name="ArrowRight" size={13} />
                     </span>
                     {(p.github || p.demo) && (
                       <div className="card-links">
                         {p.github && (
                           <a href={p.github} target="_blank" rel="noopener noreferrer" className="card-link">
-                            <Icon name="Github" size={13} /> GitHub
+                            <Icon name="Github" size={13} /> {ui.projects.github}
                           </a>
                         )}
                         {p.demo && (
                           <a href={p.demo} target="_blank" rel="noopener noreferrer" className="card-link">
-                            <Icon name="ExternalLink" size={13} /> Demo
+                            <Icon name="ExternalLink" size={13} /> {ui.projects.demo}
                           </a>
                         )}
                       </div>

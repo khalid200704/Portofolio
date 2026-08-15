@@ -1,8 +1,9 @@
-import { skills, domains } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from './Icon'
 import { FadeUp, StaggerChildren, StaggerItem } from './Animate'
 
 export default function Skills() {
+  const { skills, domains, ui } = useLanguage()
   const domainMap = Object.fromEntries(domains.map(d => [d.label, d]))
   const entries = Object.entries(skills)
 
@@ -11,14 +12,14 @@ export default function Skills() {
       <div className="container">
         <FadeUp>
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="section-label">Toolkit</span>
-            <h2 className="section-title">Skills</h2>
-            <p className="section-sub">Technologies and tools I use across domains.</p>
+            <span className="section-label">{ui.skills.eyebrow}</span>
+            <h2 className="section-title">{ui.skills.title}</h2>
+            <p className="section-sub">{ui.skills.subtitle}</p>
           </div>
         </FadeUp>
 
         {entries.length === 0 ? (
-          <p style={{ color: 'var(--muted)' }}>Skills akan muncul setelah data diisi.</p>
+          <p style={{ color: 'var(--muted)' }}>{ui.skills.empty}</p>
         ) : (
           <StaggerChildren className="skills-grid" staggerDelay={0.08}>
             {entries.map(([domain, categories]) => {

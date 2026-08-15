@@ -1,8 +1,9 @@
-import { competitions, certifications, activities } from '../data/portfolio'
+import { useLanguage } from '../i18n/LanguageContext'
 import Icon from './Icon'
 import { FadeUp, StaggerChildren, StaggerItem } from './Animate'
 
 export default function Recognition() {
+  const { competitions, certifications, activities, ui } = useLanguage()
   const hasAny = competitions.length > 0 || certifications.length > 0 || activities.length > 0
   if (!hasAny) return null
 
@@ -11,9 +12,9 @@ export default function Recognition() {
       <div className="container">
         <FadeUp>
           <div style={{ marginBottom: '2.5rem' }}>
-            <span className="section-label">Beyond the Code</span>
-            <h2 className="section-title">Recognition</h2>
-            <p className="section-sub">Kompetisi, sertifikasi, dan kegiatan yang saya ikuti.</p>
+            <span className="section-label">{ui.recognition.eyebrow}</span>
+            <h2 className="section-title">{ui.recognition.title}</h2>
+            <p className="section-sub">{ui.recognition.subtitle}</p>
           </div>
         </FadeUp>
 
@@ -21,7 +22,7 @@ export default function Recognition() {
           <div className="recognition-block">
             <FadeUp>
               <h3 className="recognition-subtitle">
-                <Icon name="Trophy" size={16} /> Kompetisi
+                <Icon name="Trophy" size={16} /> {ui.recognition.competitions}
               </h3>
             </FadeUp>
             <StaggerChildren className="exp-list" staggerDelay={0.08}>
@@ -44,7 +45,7 @@ export default function Recognition() {
           <div className="recognition-block">
             <FadeUp>
               <h3 className="recognition-subtitle">
-                <Icon name="Award" size={16} /> Sertifikasi
+                <Icon name="Award" size={16} /> {ui.recognition.certifications}
               </h3>
             </FadeUp>
             <FadeUp delay={0.05}>
@@ -64,7 +65,7 @@ export default function Recognition() {
           <div className="recognition-block">
             <FadeUp>
               <h3 className="recognition-subtitle">
-                <Icon name="Users" size={16} /> Kegiatan
+                <Icon name="Users" size={16} /> {ui.recognition.activities}
               </h3>
             </FadeUp>
             <StaggerChildren className="exp-list" staggerDelay={0.08}>
