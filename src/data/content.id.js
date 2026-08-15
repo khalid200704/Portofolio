@@ -22,8 +22,8 @@ export const about = {
     { name: "Inggris", level: "B1–B2 (TUTEP 508)" },
   ],
   // Taruh foto kamu di public/images/ lalu isi path-nya, contoh: "/images/photo.jpg"
-  avatar: "",
-  resumeUrl: "",
+  avatar: "/images/photo.webp",
+  resumeUrl: "/Abdullah-Khalid-Fadillah-CV.pdf",
 }
 
 export const domains = [
@@ -91,6 +91,32 @@ export const projects = [
       ],
       results: "Model LSTM mencapai RMSE ~31,68 dan R² ~0,9847 pada data uji, menunjukkan akurasi prediksi radiasi matahari yang tinggi untuk horizon 15 menit ke depan.",
       duration: "Tugas Akhir (Skripsi)",
+      gallery: [],
+    },
+  },
+  {
+    id: "yolo-human-detection",
+    title: "Real-Time Human Detection — YOLOv8 + ESP32-CAM",
+    domain: "ml",
+    description: "Model YOLOv8n custom-trained yang menjalankan inferensi real-time pada stream MJPEG dari ESP32-CAM, disajikan lewat aplikasi web Flask yang mengirim hasil deteksi beranotasi ke browser.",
+    tech: ["YOLOv8", "Python", "Flask", "OpenCV", "ESP32-CAM", "MQTT"],
+    github: "",
+    demo: "",
+    image: "",
+    year: 2026,
+    featured: true,
+    details: {
+      overview: "Sistem computer vision yang menjalankan model YOLOv8n custom-trained untuk deteksi manusia secara real-time, langsung dari stream MJPEG kamera ESP32-CAM, dengan hasil deteksi beranotasi yang disajikan ke browser lewat aplikasi web Flask.",
+      problem: "ESP32-CAM punya daya komputasi yang sangat terbatas untuk menjalankan inferensi computer vision secara langsung di device, sehingga proses inferensi yang berat perlu dijalankan di luar device sambil tetap mempertahankan pengalaman video live dengan latensi rendah.",
+      approach: "Melatih model YOLOv8n khusus untuk deteksi manusia, lalu membangun aplikasi web Flask yang menarik stream MJPEG dari ESP32-CAM, menjalankan inferensi per frame dengan OpenCV, dan mengirim hasil deteksi beranotasi kembali ke browser secara real-time.",
+      steps: [
+        { title: "Streaming ESP32-CAM", body: "Mengonfigurasi ESP32-CAM untuk mengirim stream MJPEG melalui jaringan." },
+        { title: "Pelatihan model YOLOv8n", body: "Melatih model YOLOv8n custom untuk deteksi manusia." },
+        { title: "Server inferensi Flask", body: "Membangun aplikasi web Flask yang menjalankan inferensi per frame dengan OpenCV." },
+        { title: "Streaming hasil beranotasi", body: "Mengirim hasil deteksi beranotasi kembali ke browser secara real-time." },
+      ],
+      results: "Berhasil menjalankan deteksi manusia real-time yang disajikan langsung di browser dari stream ESP32-CAM live.",
+      duration: "",
       gallery: [],
     },
   },

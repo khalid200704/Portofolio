@@ -297,6 +297,26 @@ function SMBDDiagram() {
   )
 }
 
+/* ─── YOLO Human Detection ───────────────────────────────── */
+function YoloDiagram() {
+  const c = '#a78bfa'
+  const y = 84
+  return (
+    <Wrap>
+      <Bg color={c}/>
+      <Box x={20}  y={y} label="ESP32-CAM" sub="MJPEG Stream" color={c} w={115}/>
+      <Arrow x1={138} y1={y+26} x2={173} y2={y+26} color={c} label="stream"/>
+      <Box x={175} y={y} label="Flask Server" sub="Pull Frames" color={c} w={120}/>
+      <Arrow x1={300} y1={y+26} x2={335} y2={y+26} color={c} label="infer"/>
+      <Box x={337} y={y} label="YOLOv8n" sub="Human Detection" color={c} dark w={130}/>
+      <Arrow x1={472} y1={y+26} x2={507} y2={y+26} color={c} label="annotate"/>
+      <Box x={509} y={y} label="OpenCV" sub="Draw Boxes" color={c} w={115}/>
+      <Arrow x1={629} y1={y+26} x2={664} y2={y+26} color={c} label="stream"/>
+      <Box x={666} y={y} label="Browser" sub="Live View" color={c} dark w={90}/>
+    </Wrap>
+  )
+}
+
 /* ─── Default fallback ───────────────────────────────────── */
 function DefaultDiagram({ color }) {
   const c = color || '#93939f'
@@ -320,6 +340,7 @@ const DIAGRAMS = {
   'monitoring-ev':         MonitoringEVDiagram,
   'prediksi-radiasi-lstm': LSTMDiagram,
   'deschain':              DeschainDiagram,
+  'yolo-human-detection':  YoloDiagram,
   'automatic-feeder-betta':AutoFeederDiagram,
   'plant-watering':        PlantWateringDiagram,
   'irigasi-avr':           IrigasiAVRDiagram,

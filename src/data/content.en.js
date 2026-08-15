@@ -22,8 +22,8 @@ export const about = {
     { name: "English", level: "B1–B2 (TUTEP 508)" },
   ],
   // Put your photo in public/images/ then set its path, e.g.: "/images/photo.jpg"
-  avatar: "",
-  resumeUrl: "",
+  avatar: "/images/photo.webp",
+  resumeUrl: "/Abdullah-Khalid-Fadillah-CV.pdf",
 }
 
 export const domains = [
@@ -91,6 +91,32 @@ export const projects = [
       ],
       results: "The LSTM model achieved an RMSE of ~31.68 and R² of ~0.9847 on the test set, showing high forecast accuracy for the 15-minute-ahead horizon.",
       duration: "Undergraduate Thesis",
+      gallery: [],
+    },
+  },
+  {
+    id: "yolo-human-detection",
+    title: "Real-Time Human Detection — YOLOv8 + ESP32-CAM",
+    domain: "ml",
+    description: "A custom-trained YOLOv8n model running real-time inference on an ESP32-CAM's MJPEG stream, served through a Flask web app that streams annotated detections back to the browser.",
+    tech: ["YOLOv8", "Python", "Flask", "OpenCV", "ESP32-CAM", "MQTT"],
+    github: "",
+    demo: "",
+    image: "",
+    year: 2026,
+    featured: true,
+    details: {
+      overview: "A computer vision system running a custom-trained YOLOv8n model for real-time human detection directly off an ESP32-CAM's MJPEG stream, with annotated detections served to the browser through a Flask web app.",
+      problem: "An ESP32-CAM has very limited compute for running computer vision inference on-device, so the heavy inference workload needs to run off-device while still delivering a low-latency, live video experience.",
+      approach: "Trained a custom YOLOv8n model for human detection, then built a Flask web app that pulls the MJPEG stream from the ESP32-CAM, runs per-frame inference with OpenCV, and streams the annotated detections back to the browser in real time.",
+      steps: [
+        { title: "ESP32-CAM streaming", body: "Configured the ESP32-CAM to stream MJPEG video over the network." },
+        { title: "YOLOv8n model training", body: "Trained a custom YOLOv8n model for human detection." },
+        { title: "Flask inference server", body: "Built a Flask web app that runs per-frame inference with OpenCV." },
+        { title: "Annotated stream output", body: "Streams the annotated detections back to the browser in real time." },
+      ],
+      results: "Achieved real-time human detection served directly in the browser from a live ESP32-CAM stream.",
+      duration: "",
       gallery: [],
     },
   },

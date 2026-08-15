@@ -196,6 +196,38 @@ function Deschain() {
   )
 }
 
+/* ─── YOLO Human Detection ───────────────────────────────── */
+function YoloHumanDetection() {
+  const c = '#a78bfa'
+  return (
+    <Wrap id="yolo" bg={c}>
+      {/* ESP32-CAM module */}
+      <rect x="24" y="60" width="88" height="60" rx="8" fill="white" stroke={c} strokeWidth="1.5" opacity="0.9"/>
+      <circle cx="68" cy="82" r="16" fill={c} opacity="0.15" stroke={c} strokeWidth="1.5"/>
+      <circle cx="68" cy="82" r="7" fill={c} opacity="0.5"/>
+      <text x="68" y="112" textAnchor="middle" fill={c} fontSize="8" fontWeight="700">ESP32-CAM</text>
+      <line x1="90" y1="60" x2="98" y2="46" stroke={c} strokeWidth="2" strokeLinecap="round" opacity="0.5"/>
+      {/* stream arrow */}
+      <line x1="118" y1="90" x2="168" y2="90" stroke={c} strokeWidth="1.5" strokeDasharray="4 4" opacity="0.55"/>
+      <polygon points="168,90 160,85 160,95" fill={c} opacity="0.6"/>
+      <text x="143" y="80" textAnchor="middle" fill={c} fontSize="7" opacity="0.6">MJPEG</text>
+      {/* browser frame with detection */}
+      <rect x="176" y="34" width="200" height="112" rx="8" fill="white" stroke={c} strokeWidth="1.5" opacity="0.9"/>
+      <rect x="176" y="34" width="200" height="20" rx="8" fill={c} opacity="0.15"/>
+      <circle cx="190" cy="44" r="3" fill={c} opacity="0.5"/>
+      <circle cx="200" cy="44" r="3" fill={c} opacity="0.5"/>
+      <circle cx="210" cy="44" r="3" fill={c} opacity="0.5"/>
+      {/* person silhouette */}
+      <circle cx="276" cy="82" r="10" fill={c} opacity="0.35"/>
+      <path d="M260,122 Q276,96 292,122 Z" fill={c} opacity="0.3"/>
+      {/* bounding box */}
+      <rect x="252" y="66" width="48" height="62" rx="3" fill="none" stroke={c} strokeWidth="1.5"/>
+      <rect x="252" y="58" width="42" height="12" rx="2" fill={c} opacity="0.85"/>
+      <text x="273" y="67" textAnchor="middle" fill="white" fontSize="7" fontWeight="700">PERSON</text>
+    </Wrap>
+  )
+}
+
 /* ─── Auto Feeder Betta ──────────────────────────────────── */
 function AutoFeeder() {
   const c = '#4f8ef7'
@@ -428,6 +460,7 @@ const VISUALS = {
   'monitoring-ev':         MonitoringEV,
   'prediksi-radiasi-lstm': PrediksiLSTM,
   'deschain':              Deschain,
+  'yolo-human-detection':  YoloHumanDetection,
   'automatic-feeder-betta':AutoFeeder,
   'plant-watering':        PlantWatering,
   'irigasi-avr':           IrigasiAVR,
